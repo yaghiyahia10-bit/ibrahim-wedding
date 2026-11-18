@@ -1,0 +1,1188 @@
+/* =========================
+   الإعدادات العامة
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+body {
+    direction: rtl;
+    max-width: 100%;
+    overflow-x: clip;
+    background: #f7f3ed;
+    color: #92744e;
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+:root {
+    --cream: #f7f3ed;
+    --cream-dark: #eee5d8;
+    --gold: #b89b72;
+    --gold-dark: #92744e;
+    --text: #817565;
+    --dark: #33291f;
+}
+
+
+/* =========================
+   التأثير السينمائي
+========================= */
+
+.film-grain {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+
+/* =========================
+   غلاف الدعوة
+========================= */
+
+.hero {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            rgba(36, 27, 19, 0.48),
+            rgba(36, 27, 19, 0.62)
+        ),
+        url("assets/images/couple-main.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+
+    perspective: 1000px;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 10%,
+            rgba(0, 0, 0, 0.35) 100%
+        );
+
+    pointer-events: none;
+}
+
+.frame {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 650px;
+    min-height: 82vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+
+    text-align: center;
+
+    border: 1px solid rgba(220, 190, 140, 0.85);
+    outline: 1px solid rgba(220, 190, 140, 0.55);
+    outline-offset: 7px;
+
+    background: rgba(35, 27, 20, 0.22);
+    backdrop-filter: blur(2px);
+
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.15);
+
+    animation: frameAppear 1.5s ease both;
+}
+
+@keyframes frameAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.envelope-flap {
+    position: absolute;
+    top: -1px;
+    left: 0;
+
+    width: 100%;
+    height: 95px;
+
+    background: linear-gradient(
+        135deg,
+        #d9c29c,
+        #f3e5ca,
+        #c5a46c
+    );
+
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top center;
+
+    z-index: 3;
+    pointer-events: none;
+}
+
+.top-text {
+    color: #e8d4b3;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+.flower {
+    color: #d9bd91;
+    font-size: 40px;
+    margin: 35px 0;
+    animation: flowerGlow 3s ease-in-out infinite;
+}
+
+@keyframes flowerGlow {
+    0%, 100% {
+        text-shadow: 0 0 5px rgba(220, 190, 140, 0.2);
+    }
+
+    50% {
+        text-shadow: 0 0 22px rgba(220, 190, 140, 0.8);
+    }
+}
+
+.hero h1 {
+    color: #fff5e7;
+    font-size: clamp(38px, 9vw, 68px);
+    font-weight: normal;
+    letter-spacing: 1px;
+
+    animation: namesAppear 1.2s ease both;
+}
+
+.hero h1 span,
+.footer-names span {
+    color: #d8b77e;
+    font-style: italic;
+}
+
+.hero .subtitle {
+    margin-top: 22px;
+    color: #ead9bf;
+    font-size: 15px;
+
+    animation: namesAppear 1.2s ease 0.3s both;
+}
+
+.gold-line {
+    width: 85px;
+    height: 1px;
+    margin: 28px auto;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #d6b77f,
+        transparent
+    );
+}
+
+.hero .invitation {
+    margin-top: 5px;
+    color: #e8d9c5;
+    font-size: 14px;
+    line-height: 2.2;
+
+    animation: namesAppear 1.2s ease 0.5s both;
+}
+
+.date {
+    margin-top: 28px;
+    color: #e8c995;
+    font-size: 19px;
+    letter-spacing: 4px;
+}
+
+.hero button {
+    position: relative;
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    margin-top: 40px;
+    padding: 15px 35px;
+
+    background: rgba(213, 183, 137, 0.12);
+    border: 1px solid #d4b783;
+
+    color: #fff1dc;
+    font-family: inherit;
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.35s ease;
+}
+
+.hero button:hover {
+    background: #b89b72;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(190, 150, 75, 0.3);
+}
+
+.button-arrow {
+    color: #e7c995;
+}
+
+.bottom-text {
+    margin-top: 40px;
+    color: #e4d0b1;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+@keyframes namesAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   فتح الغلاف
+========================= */
+
+#invitationCover.opening {
+    opacity: 0;
+    transform: scale(1.08);
+    pointer-events: none;
+}
+
+#invitationCover.opening .envelope-flap {
+    animation: openFlap 0.8s ease forwards;
+}
+
+#invitationCover.opening .frame {
+    animation: openCard 1s ease forwards;
+}
+
+@keyframes openFlap {
+    to {
+        transform: rotateX(180deg);
+        opacity: 0;
+    }
+}
+
+@keyframes openCard {
+    to {
+        transform: scale(0.94);
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   ظهور المحتوى
+========================= */
+
+#invitationContent {
+    animation: contentAppear 1s ease both;
+}
+
+@keyframes contentAppear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.gallery,
+.quotes-section,
+.countdown,
+.calendar-section,
+.venue-section {
+    opacity: 0;
+    transform: translateY(35px);
+
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s ease;
+}
+
+.gallery.show,
+.quotes-section.show,
+.countdown.show,
+.calendar-section.show,
+.venue-section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =========================
+   العناوين الصغيرة
+========================= */
+
+.small-title {
+    color: #b1956d;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   مقدمة الحكاية
+========================= */
+
+.story-intro {
+    position: relative;
+    min-height: 440px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 80px 25px;
+    text-align: center;
+
+    color: #f7e8d0;
+
+    background:
+        linear-gradient(
+            rgba(45, 33, 23, 0.76),
+            rgba(45, 33, 23, 0.82)
+        ),
+        url("assets/images/couple-main.jpg");
+
+    background-size: cover;
+    background-position: center 45%;
+    background-attachment: fixed;
+}
+
+.story-content {
+    max-width: 600px;
+}
+
+.eyebrow {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #d7bb8c;
+}
+
+.story-symbol {
+    margin: 25px 0;
+    font-size: 35px;
+    color: #d9bd91;
+}
+
+.story-intro h2 {
+    font-size: clamp(30px, 6vw, 46px);
+    font-weight: normal;
+    line-height: 1.7;
+}
+
+.story-intro p {
+    margin-top: 20px;
+    color: #e7d7c1;
+    font-size: 15px;
+    line-height: 2;
+}
+
+
+/* =========================
+   معرض الصور
+========================= */
+
+.gallery {
+    padding: 110px 20px;
+    text-align: center;
+    background: var(--cream);
+}
+
+.gallery h2,
+.countdown h2,
+.calendar-section h2,
+.venue-section h2 {
+    margin: 22px 0;
+    color: var(--gold-dark);
+    font-size: clamp(32px, 6vw, 48px);
+    font-weight: normal;
+}
+
+.gallery-description {
+    margin-bottom: 45px;
+    color: var(--text);
+    font-size: 14px;
+}
+
+.gallery-grid {
+    max-width: 950px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.gallery-photo {
+    position: relative;
+    min-height: 360px;
+
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: end;
+
+    border: 1px solid #c5a77b;
+
+    background-color: #d9cbb8;
+    background-size: cover;
+    background-position: center;
+
+    box-shadow: 0 12px 35px rgba(73, 53, 30, 0.12);
+}
+
+.gallery-photo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        to top,
+        rgba(27, 21, 16, 0.75),
+        transparent 55%
+    );
+
+    transition: 0.5s ease;
+}
+
+.gallery-photo:hover::before {
+    background: linear-gradient(
+        to top,
+        rgba(27, 21, 16, 0.85),
+        rgba(27, 21, 16, 0.08)
+    );
+}
+
+.gallery-photo span {
+    position: relative;
+    z-index: 1;
+
+    margin-bottom: 28px;
+
+    color: #fff0d9;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+.photo-one {
+    background-image: url("assets/images/couple-main.jpg");
+}
+
+.photo-two {
+    background-image: url("assets/images/couple-close.jpg");
+}
+
+.photo-three {
+    grid-column: span 2;
+    min-height: 300px;
+
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(205, 174, 127, 0.28),
+            transparent 60%
+        ),
+        linear-gradient(
+            135deg,
+            #51402f,
+            #2e261f,
+            #6d553b
+        );
+}
+
+.photo-three::before {
+    background:
+        radial-gradient(
+            circle,
+            transparent 10%,
+            rgba(0, 0, 0, 0.25) 100%
+        );
+}
+
+.photo-three-content {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    color: #f1dfc1;
+}
+
+.photo-three-content span {
+    margin: 0;
+    color: #d9bd91;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+.photo-three-content strong {
+    font-size: 38px;
+    font-weight: normal;
+}
+
+.photo-three-content small {
+    font-size: 13px;
+    color: #e8d6bb;
+}
+
+
+/* =========================
+   قسم الحكاية
+========================= */
+
+.quotes-section {
+    position: relative;
+    padding: 110px 25px;
+    text-align: center;
+
+    color: #f6e7d1;
+
+    background:
+        linear-gradient(
+            rgba(49, 37, 26, 0.88),
+            rgba(49, 37, 26, 0.92)
+        ),
+        url("assets/images/couple-close.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.quote-decoration {
+    color: #d9bd91;
+    font-size: 34px;
+    margin-bottom: 20px;
+}
+
+.quotes-section .small-title {
+    color: #d9bd91;
+}
+
+.quotes-section h2 {
+    margin: 25px 0;
+    color: #f4e4cc;
+    font-size: clamp(27px, 5vw, 38px);
+    font-weight: normal;
+}
+
+.quotes-section p {
+    color: #e5d4bd;
+    font-size: 16px;
+    line-height: 2.3;
+}
+
+.quote-divider {
+    margin: 35px 0;
+    color: #d8b77e;
+    font-size: 34px;
+    animation: weddingPulse 2.5s ease-in-out infinite;
+}
+
+.quotes-section .couple-quote {
+    color: #e9c995;
+    font-size: 18px;
+}
+
+
+/* =========================
+   العداد التنازلي
+========================= */
+
+.countdown {
+    padding: 110px 15px;
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #f8f1e7,
+            #eee5d8
+        );
+}
+
+.countdown-description {
+    color: var(--text);
+    font-size: 14px;
+}
+
+.countdown-box {
+    max-width: 650px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 50px auto;
+    flex-wrap: wrap;
+}
+
+.time-unit {
+    min-width: 105px;
+    padding: 22px 15px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    border: 1px solid rgba(184, 155, 114, 0.55);
+    background: rgba(255, 255, 255, 0.3);
+
+    box-shadow: 0 8px 25px rgba(100, 75, 45, 0.06);
+}
+
+.time-unit span {
+    color: var(--gold-dark);
+    font-size: 38px;
+    font-weight: normal;
+    font-variant-numeric: tabular-nums;
+}
+
+.time-unit small {
+    color: var(--text);
+    font-size: 12px;
+}
+
+.countdown-footer {
+    color: var(--gold-dark);
+    font-size: 13px;
+}
+
+
+/* =========================
+   التقويم
+========================= */
+
+.calendar-section {
+    padding: 110px 20px;
+    text-align: center;
+    background: var(--cream);
+}
+
+.calendar-month {
+    margin: 30px 0;
+    color: var(--text);
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+
+.calendar {
+    max-width: 440px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px 5px;
+    align-items: center;
+}
+
+.calendar div {
+    padding-bottom: 15px;
+    color: #a58a66;
+    font-size: 11px;
+}
+
+.calendar span {
+    padding: 12px 0;
+    color: var(--text);
+    font-size: 14px;
+}
+
+.calendar .wedding-day {
+    position: relative;
+    z-index: 1;
+
+    border: 1px solid #a58a66;
+    border-radius: 50%;
+
+    color: #fff;
+    background: var(--gold-dark);
+
+    font-weight: bold;
+
+    animation: weddingPulse 2.5s ease-in-out infinite;
+}
+
+.calendar-note {
+    margin-top: 35px;
+    color: var(--gold-dark);
+    font-size: 13px;
+}
+
+
+/* =========================
+   قسم الصالة
+========================= */
+
+.venue-section {
+    position: relative;
+    overflow: hidden;
+
+    padding: 110px 20px;
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            #f5ead9,
+            #e9ddcb
+        );
+}
+
+.venue-card {
+    position: relative;
+    z-index: 1;
+
+    max-width: 450px;
+    margin: 35px auto 0;
+    padding: 45px 22px;
+
+    background: rgba(255, 252, 246, 0.75);
+
+    border: 1px solid #c5a77b;
+    outline: 1px solid rgba(197, 167, 123, 0.5);
+    outline-offset: 6px;
+
+    box-shadow: 0 15px 40px rgba(75, 55, 30, 0.1);
+}
+
+.venue-icon {
+    color: var(--gold);
+    font-size: 38px;
+}
+
+.venue-card h3 {
+    margin: 22px 0;
+    color: var(--gold-dark);
+    font-size: 23px;
+    font-weight: normal;
+}
+
+.venue-card p {
+    color: var(--text);
+    font-size: 14px;
+    line-height: 2.3;
+}
+
+.venue-button {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 15px 25px;
+
+    background: var(--gold-dark);
+    border: 1px solid var(--gold-dark);
+
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+
+    transition: 0.3s ease;
+}
+
+.venue-button:hover {
+    background: transparent;
+    color: var(--gold-dark);
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   الخاتمة
+========================= */
+
+.wedding-footer {
+    padding: 90px 20px;
+    text-align: center;
+
+    color: #f4e3c9;
+
+    background:
+        linear-gradient(
+            rgba(43, 33, 24, 0.94),
+            rgba(43, 33, 24, 0.97)
+        );
+}
+
+.footer-symbol {
+    color: #d9bd91;
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.wedding-footer h2 {
+    color: #f1dfc1;
+    font-size: 29px;
+    font-weight: normal;
+}
+
+.wedding-footer p {
+    margin-top: 18px;
+    color: #d8c6aa;
+    font-size: 14px;
+}
+
+.footer-names {
+    margin: 35px 0 20px;
+    color: #f1dfc1;
+    font-size: 30px;
+}
+
+.wedding-footer small {
+    color: #c6a979;
+    letter-spacing: 3px;
+}
+
+
+/* =========================
+   الحركات
+========================= */
+
+@keyframes weddingPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(190, 150, 75, 0.12);
+    }
+
+    50% {
+        box-shadow: 0 0 15px 5px rgba(190, 150, 75, 0.22);
+    }
+}
+
+
+/* =========================
+   الموبايل
+========================= */
+
+@media (max-width: 600px) {
+
+    .hero {
+        padding: 22px;
+        background-position: center;
+    }
+
+    .frame {
+        min-height: 78svh;
+        padding: 30px 15px;
+    }
+
+    .envelope-flap {
+        height: 65px;
+    }
+
+    .flower {
+        margin: 25px 0;
+        font-size: 32px;
+    }
+
+    .hero .subtitle {
+        font-size: 13px;
+    }
+
+    .hero .invitation {
+        font-size: 12px;
+    }
+
+    .date {
+        font-size: 16px;
+    }
+
+    .story-intro {
+        min-height: 380px;
+        background-attachment: scroll;
+    }
+
+    .gallery {
+        padding: 80px 18px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .gallery-photo {
+        min-height: 330px;
+    }
+
+    .photo-three {
+        grid-column: span 1;
+        min-height: 260px;
+    }
+
+    .quotes-section {
+        padding: 85px 20px;
+        background-attachment: scroll;
+    }
+
+    .quotes-section p {
+        font-size: 14px;
+    }
+
+    .countdown {
+        padding: 85px 15px;
+    }
+
+    .countdown-box {
+        gap: 10px;
+    }
+
+    .time-unit {
+        min-width: 70px;
+        padding: 17px 9px;
+    }
+
+    .time-unit span {
+        font-size: 27px;
+    }
+
+    .time-unit small {
+        font-size: 10px;
+    }
+
+    .calendar-section {
+        padding: 85px 15px;
+    }
+
+    .calendar {
+        gap: 8px 3px;
+    }
+
+    .calendar div {
+        font-size: 9px;
+    }
+
+    .calendar span {
+        font-size: 12px;
+        padding: 10px 0;
+    }
+
+    .venue-section {
+        padding: 85px 20px;
+    }
+
+    .venue-card {
+        padding: 35px 15px;
+    }
+
+    .wedding-footer {
+        padding: 75px 20px;
+    }
+}
+
+
+/* احترام إعداد تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+}
+
+/* =====================================
+   الخلفية السينمائية العامة للموقع
+===================================== */
+
+#invitationContent {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+}
+
+/* الصورة الأساسية خلف جميع الأقسام */
+#invitationContent::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            rgba(35, 27, 20, 0.48),
+            rgba(35, 27, 20, 0.58)
+        ),
+        url("assets/images/couple-main.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* مقدمة الموقع */
+.story-intro {
+    background:
+        linear-gradient(
+            rgba(35, 27, 20, 0.48),
+            rgba(35, 27, 20, 0.60)
+        );
+}
+
+/* معرض الصور */
+.gallery {
+    background: rgba(247, 243, 237, 0.84);
+    backdrop-filter: blur(3px);
+}
+
+/* صورة الإيدين والخواتم */
+.photo-two {
+    background-image: url("assets/images/hands-rings.jpg");
+}
+
+/* قسم الحكاية */
+.quotes-section {
+    background: rgba(39, 29, 21, 0.78);
+    backdrop-filter: blur(3px);
+}
+
+/* العداد */
+.countdown {
+    background: rgba(247, 241, 231, 0.86);
+    backdrop-filter: blur(4px);
+}
+
+/* التقويم */
+.calendar-section {
+    background: rgba(247, 243, 237, 0.86);
+    backdrop-filter: blur(4px);
+}
+
+/* الصالة */
+.venue-section {
+    background: rgba(239, 228, 211, 0.86);
+    backdrop-filter: blur(4px);
+}
+
+/* بطاقة الصالة */
+.venue-card {
+    background: rgba(255, 252, 246, 0.86);
+    backdrop-filter: blur(5px);
+}
+
+/* الخاتمة */
+.wedding-footer {
+    background: rgba(35, 27, 20, 0.91);
+}
+
+/* تحسين وضوح الخلفية على الهاتف */
+@media (max-width: 600px) {
+
+    #invitationContent::before {
+        background-position: center center;
+    }
+
+    .gallery,
+    .countdown,
+    .calendar-section,
+    .venue-section {
+        backdrop-filter: blur(2px);
+    }
+
+}
+
+/* تحسين وضوح الخطوط في كامل الموقع */
+
+body {
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* العناوين */
+h1, h2, h3,
+.section-title,
+.story-title {
+    font-weight: 800 !important;
+}
+
+/* النصوص والفقرات */
+p, span, .story-text {
+    font-weight: 600;
+}
+
+/* الأزرار */
+button, a {
+    font-weight: 700;
+}
+
+/* أسماء العروسين */
+.hero h1,
+.couple-names {
+    font-weight: 900 !important;
+}
+
+/* تحسين وضوح النص فوق الصور */
+.story-intro,
+.hero {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
